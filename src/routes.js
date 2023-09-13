@@ -1,4 +1,4 @@
-const { randomUUID } = require('node:crypto')
+const { v4: uuidv4 } = require('uuid');
 const { Database } = require('./database.js')
 const { buildRoutePath } = require('./utils/build-route-path.js')
 
@@ -23,8 +23,10 @@ const routes = [
         )
       }
 
+      const shortUuid = uuidv4().substr(0, 12);
+
       const task = {
-        id: randomUUID(),
+        id: shortUuid,
         title,
         description,
         completed_at: null,
