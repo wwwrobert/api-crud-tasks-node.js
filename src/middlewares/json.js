@@ -1,4 +1,4 @@
-export async function json(req, res) {
+async function json(req, res) {
     const buffers = []
   
     for await (const chunk of req) {
@@ -13,3 +13,5 @@ export async function json(req, res) {
   
     res.setHeader('Content-type', 'application/json')
   }
+
+  module.exports = { json }

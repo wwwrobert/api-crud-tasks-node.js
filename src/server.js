@@ -1,8 +1,8 @@
-import http from 'node:http'
+const http = require('http');
 
-import { json } from './middlewares/json.js'
-import { routes } from './routes.js'
-import { extractQueryParams } from './utils/extract-query-params.js'
+const { json } = require('./middlewares/json.js')
+const { routes } = require('./routes.js')
+const { extractQueryParams } = require('./utils/extract-query-params.js')
 
 const server = http.createServer(async (req, res) => {
   const { method, url } = req

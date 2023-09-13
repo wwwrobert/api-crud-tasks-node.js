@@ -1,8 +1,9 @@
-import fs from 'node:fs/promises'
+const fs = require('node:fs/promises')
+const path = require('path');
 
-const databasePath = new URL('../db.json', import.meta.url)
+const databasePath = path.resolve(__dirname, '../db.json');
 
-export class Database {
+class Database {
   #database = {}
 
   constructor() {
@@ -66,3 +67,5 @@ export class Database {
     }
   }
 }
+
+module.exports = { Database }

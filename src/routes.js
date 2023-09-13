@@ -1,10 +1,10 @@
-import { randomUUID } from 'node:crypto'
-import { Database } from './database.js'
-import { buildRoutePath } from './utils/build-route-path.js'
+const { randomUUID } = require('node:crypto')
+const { Database } = require('./database.js')
+const { buildRoutePath } = require('./utils/build-route-path.js')
 
 const database = new Database()
 
-export const routes = [
+const routes = [
   {
     method: 'POST',
     path: buildRoutePath('/tasks'),
@@ -13,13 +13,13 @@ export const routes = [
 
       if (!title) {
         return res.writeHead(400).end(
-          JSON.stringify({ message: 'title is required' }),
+          JSON.stringify({ message: 'O título é obrigatório.' }),
         )
       }
 
       if (!description) {
         return res.writeHead(400).end(
-          JSON.stringify({message: 'description is required' })
+          JSON.stringify({message: 'A descrição é obrigatória.' })
         )
       }
 
@@ -60,7 +60,7 @@ export const routes = [
 
       if (!title || !description) {
         return res.writeHead(400).end(
-          JSON.stringify({ message: 'title or description are required' })
+          JSON.stringify({ message: 'Título ou descrição são obrigatórios' })
         )
       }
 
@@ -117,3 +117,5 @@ export const routes = [
     }
   }
 ]
+
+module.exports = { routes }
